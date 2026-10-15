@@ -7,86 +7,58 @@
 
   <!-- CSS de Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <style>
-    /* 1. Borde principal alrededor de TODO el formulario */
-    .card-encuesta {
-      border: 2.5px solid #198754 !important; /* Borde verde bien marcado */
-      overflow: hidden; /* Mantiene las esquinas redondeadas limpias */
-    }
-
-    /* 2. Bordes visibles para todos los campos de texto e insumos */
-    .form-control, 
-    .form-select, 
-    .form-check-input {
-      border: 1.5px solid #6c757d !important; /* Borde gris marcado */
-    }
-
-    /* 3. Color verde al seleccionar radios o checkboxes */
-    .form-check-input:checked {
-      background-color: #198754 !important;
-      border-color: #198754 !important;
-    }
-
-    /* 4. Resalte al hacer clic en los campos */
-    .form-control:focus, 
-    .form-select:focus, 
-    .form-check-input:focus {
-      border-color: #198754 !important;
-      box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25) !important;
-    }
-  </style>
 </head>
-<body class="bg-light py-4">
+<body class="bg-light py-5">
 
-  <!-- Contenedor principal centrado -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
 
-        <!-- Tarjeta del formulario con BORDE EXTERNO marcado -->
-        <div class="card card-encuesta shadow-sm rounded-3">
+        <!-- ISO 9126: Atractivo visual y Operabilidad (Enmarcado claro con bordes verdes e interacción) -->
+        <div class="card border border-success border-2 rounded-4 shadow-sm overflow-hidden">
           
-          <!-- Encabezado de la tarjeta -->
-          <div class="card-header bg-success text-white text-center py-3 border-0">
-            <h3 class="fw-bold mb-1">Parque Nacional Cotopaxi</h3>
-            <p class="mb-0 small">Encuesta de Satisfacción del Visitante</p>
+          <!-- Encabezado con alta legibilidad -->
+          <div class="card-header bg-success text-white text-center py-4 border-0">
+            <h2 class="h4 fw-bold mb-1">Parque Nacional Cotopaxi</h2>
+            <p class="small mb-0 opacity-75">Encuesta de Satisfacción del Visitante</p>
           </div>
 
-          <!-- Cuerpo del formulario -->
           <div class="card-body p-4">
-            <form action="/action_page.php">
+            <form action="/action_page.php" class="vstack gap-2">
 
-              <!-- Pregunta 1: Nombre y apellido -->
-              <div class="mb-3">
-                <label for="nombre" class="form-label fw-bold">1. Nombre y apellido:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre completo">
+              <!-- ISO 9126: Comprensibilidad - Pregunta 1 -->
+              <div class="form-field">
+                <label for="nombre" class="form-label fw-semibold text-dark">1. Nombre y apellido:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej. Juan Pérez">
+                <div class="form-text">Ingrese su nombre completo para registrar su visita.</div>
               </div>
 
-              <!-- Pregunta 2: Fecha de la visita -->
-              <div class="mb-3">
-                <label for="fecha" class="form-label fw-bold">2. Fecha de la visita:</label>
+              <!-- Pregunta 2 -->
+              <div class="form-field">
+                <label for="fecha" class="form-label fw-semibold text-dark">2. Fecha de la visita:</label>
                 <input type="date" class="form-control" id="fecha" name="fecha">
               </div>
 
-              <!-- Pregunta 3: Tipo de visitante -->
-              <div class="mb-3">
-                <label class="form-label fw-bold d-block">3. Tipo de visitante:</label>
-                <div class="form-check form-check-inline me-4">
-                  <input class="form-check-input" type="radio" id="nacional" name="tipo_visitante" value="nacional">
-                  <label class="form-check-label" for="nacional">Turista nacional</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="internacional" name="tipo_visitante" value="internacional">
-                  <label class="form-check-label" for="internacional">Turista internacional</label>
+              <!-- ISO 9126: Aprendibilidad/Operabilidad - Agrupamiento visual contenido -->
+              <div class="form-group">
+                <label class="form-label fw-semibold text-dark">3. Tipo de visitante:</label>
+                <div class="vstack gap-2 p-3 bg-light rounded-3 border">
+                  <div class="form-field mb-0">
+                    <input type="radio" id="nacional" class="radio" name="tipo_visitante" value="nacional">
+                    <label for="nacional">Turista nacional</label>
+                  </div>
+                  <div class="form-field mb-0">
+                    <input type="radio" id="internacional" class="radio" name="tipo_visitante" value="internacional">
+                    <label for="internacional">Turista internacional</label>
+                  </div>
                 </div>
               </div>
 
-              <!-- Pregunta 4: Rango de presupuesto -->
-              <div class="mb-3">
-                <label for="presupuesto" class="form-label fw-bold">4. Rango de presupuesto gastado:</label>
-                <select class="form-select" id="presupuesto" name="presupuesto">
-                  <option selected disabled>Selecciona una opción...</option>
+              <!-- Pregunta 4 -->
+              <div class="form-field">
+                <label for="presupuesto" class="form-label fw-semibold text-dark">4. Rango de presupuesto gastado:</label>
+                <select class="form-control" id="presupuesto" name="presupuesto">
+                  <option selected disabled>Seleccione una opción…</option>
                   <option value="menos20">Menos de $20 USD</option>
                   <option value="20-50">$20 - $50 USD</option>
                   <option value="51-100">$51 - $100 USD</option>
@@ -94,68 +66,72 @@
                 </select>
               </div>
 
-              <!-- Pregunta 5: Servicios e instalaciones -->
-              <div class="mb-3">
-                <label class="form-label fw-bold d-block">5. Servicios e instalaciones que utilizó:</label>
-                
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" id="servicio1" name="servicio1" value="centro">
-                  <label class="form-check-label" for="servicio1">Centro de interpretación / Museo</label>
-                </div>
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" id="servicio2" name="servicio2" value="banos">
-                  <label class="form-check-label" for="servicio2">Servicios higiénicos (Baños)</label>
-                </div>
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" id="servicio3" name="servicio3" value="cafeteria">
-                  <label class="form-check-label" for="servicio3">Tienda de artesanías o cafetería</label>
-                </div>
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" id="servicio4" name="servicio4" value="parqueadero">
-                  <label class="form-check-label" for="servicio4">Zonas de parqueadero</label>
-                </div>
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" id="servicio5" name="servicio5" value="picnic">
-                  <label class="form-check-label" for="servicio5">Áreas de picnic / Camping</label>
+              <!-- Pregunta 5 -->
+              <div class="form-group">
+                <label class="form-label fw-semibold text-dark">5. Servicios e instalaciones que utilizó:</label>
+                <div class="vstack gap-2 p-3 bg-light rounded-3 border">
+                  <div class="form-field mb-0">
+                    <input type="checkbox" id="servicio1" class="check" name="servicio1" value="centro">
+                    <label for="servicio1">Centro de interpretación / Museo</label>
+                  </div>
+                  <div class="form-field mb-0">
+                    <input type="checkbox" id="servicio2" class="check" name="servicio2" value="banos">
+                    <label for="servicio2">Servicios higiénicos (Baños)</label>
+                  </div>
+                  <div class="form-field mb-0">
+                    <input type="checkbox" id="servicio3" class="check" name="servicio3" value="cafeteria">
+                    <label for="servicio3">Tienda de artesanías o cafetería</label>
+                  </div>
+                  <div class="form-field mb-0">
+                    <input type="checkbox" id="servicio4" class="check" name="servicio4" value="parqueadero">
+                    <label for="servicio4">Zonas de parqueadero</label>
+                  </div>
+                  <div class="form-field mb-0">
+                    <input type="checkbox" id="servicio5" class="check" name="servicio5" value="picnic">
+                    <label for="servicio5">Áreas de picnic / Camping</label>
+                  </div>
                 </div>
               </div>
 
-              <!-- Pregunta 6: Calificación de senderos -->
-              <div class="mb-3">
-                <label for="calificacion" class="form-label fw-bold">6. Calificación del estado de los senderos (1 al 5):</label>
+              <!-- Pregunta 6 -->
+              <div class="form-field">
+                <label for="calificacion" class="form-label fw-semibold text-dark">6. Calificación del estado de los senderos (1 al 5):</label>
                 <input type="number" class="form-control" id="calificacion" name="calificacion" min="1" max="5" placeholder="Del 1 al 5">
+                <div class="form-text">Donde 1 es deficiente y 5 es excelente.</div>
               </div>
 
-              <!-- Pregunta 7: Hora de ingreso -->
-              <div class="mb-3">
-                <label for="horario" class="form-label fw-bold">7. Hora de ingreso:</label>
+              <!-- Pregunta 7 -->
+              <div class="form-field">
+                <label for="horario" class="form-label fw-semibold text-dark">7. Hora de ingreso:</label>
                 <input type="time" class="form-control" id="horario" name="horario">
               </div>
 
-              <!-- Pregunta 8: Correo electrónico -->
-              <div class="mb-3">
-                <label for="email" class="form-label fw-bold">8. Correo electrónico de contacto:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="correo@ejemplo.com">
+              <!-- Pregunta 8 -->
+              <div class="form-field">
+                <label for="email" class="form-label fw-semibold text-dark">8. Correo electrónico de contacto:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com">
+                <div class="form-text">No compartiremos su correo electrónico con nadie más.</div>
               </div>
 
-              <!-- Pregunta 9: Sugerencias o comentarios -->
-              <div class="mb-3">
-                <label for="sugerencias" class="form-label fw-bold">9. Sugerencias o comentarios:</label>
-                <textarea class="form-control" id="sugerencias" name="sugerencias" rows="3" placeholder="Déjanos tus comentarios aquí..."></textarea>
+              <!-- Pregunta 9 -->
+              <div class="form-field">
+                <label for="sugerencias" class="form-label fw-semibold text-dark">9. Sugerencias o comentarios:</label>
+                <textarea class="form-control" id="sugerencias" name="sugerencias" rows="3" placeholder="Asegúrese de incluir detalles relevantes sobre su experiencia..."></textarea>
               </div>
 
-              <!-- Pregunta 10: Aceptación de términos -->
-              <div class="form-check mb-4">
-                <input class="form-check-input" type="checkbox" id="terminos" name="terminos" value="acepto">
-                <label class="form-check-label small text-secondary" for="terminos">
-                  Acepto los términos y políticas de privacidad
-                </label>
+              <!-- Pregunta 10 -->
+              <div class="form-field p-3 bg-light rounded-3 border my-2">
+                <input type="checkbox" id="terminos" class="check" name="terminos" value="acepto" required>
+                <div class="form-field-content">
+                  <label for="terminos" class="fw-semibold text-dark">Términos y condiciones</label>
+                  <small class="form-text">Acepto el tratamiento de datos para fines estadísticos del parque.</small>
+                </div>
               </div>
 
-              <!-- Botones -->
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="reset" class="btn btn-outline-secondary me-md-2">Limpiar</button>
-                <button type="submit" class="btn btn-success fw-bold px-4">Enviar Encuesta</button>
+              <!-- ISO 9126: Operabilidad (Botones claramente diferenciados) -->
+              <div class="d-flex justify-content-end gap-2 pt-2">
+                <button type="reset" class="btn btn-outline-secondary px-4">Limpiar</button>
+                <button type="submit" class="btn-solid theme-primary px-4">Enviar Encuesta</button>
               </div>
 
             </form>
@@ -167,7 +143,6 @@
     </div>
   </div>
 
-  <!-- JavaScript de Bootstrap 5 -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
